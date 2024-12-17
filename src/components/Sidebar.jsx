@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Home, Mail, Settings, Layers, LogOut, CircleHelp } from 'lucide-react';
+import { Home, Mail, Ticket, Layers, LogOut, BellPlus } from 'lucide-react';
 import logo from '../assets/rusatransparan.png'
 
 const Sidebar = () => {
@@ -59,29 +59,28 @@ const Sidebar = () => {
                             <span>Chat</span>
                         </button>
                     </div>
-
                     <div>
-                        <div className="space-y-2 mt-16">
-                            <button 
-                                onClick={() => handleNavigation('/admin/video', 'Video List')}
-                                className="flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10"
-                            >
-                                <Settings className="w-5 h-5" />
-                                <span>Setting</span>
-                            </button>
-                            <button 
-                                onClick={() => navigate('/admin/music', 'Music List')}
-                                className="flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10"
-                            >
-                                <CircleHelp className="w-5 h-5" />
-                                <span>Help Center</span>
-                            </button>
-                        </div>
+                        <button 
+                            onClick={() => navigate('/admin/voucher-generator', 'Voucher')}
+                            className="flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10"
+                        >
+                            <Ticket className="w-5 h-5" />
+                            <span>Voucher Generator</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button 
+                            onClick={() => navigate('/admin/notification-generator', 'Notification')}
+                            className="flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10"
+                        >
+                            <BellPlus className="w-5 h-5" />
+                            <span>Notification Generator</span>
+                        </button>
                     </div>
 
+
                     <div>
-                        <p className="text-sm text-white/60 mb-2">General</p>
-                        <div className="space-y-2">
+                        <div className="space-y-2 fixed bottom-0">
                             <button 
                                 onClick={handleLogout}
                                 className="flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10"
