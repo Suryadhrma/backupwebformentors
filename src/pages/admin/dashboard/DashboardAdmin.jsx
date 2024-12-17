@@ -1,6 +1,7 @@
-// pages/admin/DashboardAdmin.jsx
-import React, { useState } from 'react';
-import MentorCard from '../../../components/admin/MentorCard';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'; // Untuk membaca route dari sidebar
+
+import ValidationCard from '../../../components/admin/ValidationCard';
 
 const mentors = [
   { id: 1, name: "Jerome Polan", status: "Menunggu Konfirmasi" },
@@ -11,11 +12,37 @@ const mentors = [
   { id: 6, name: "Jerome Polan", status: "Menunggu Konfirmasi" },
 ];
 
-const DashboardAdmin = () => {
-  // State untuk tab yang aktif
-  const [activeTab, setActiveTab] = useState('permintaan');
+const courses = [
+  { id: 1, title: "Course A", status: "Menunggu Konfirmasi" },
+  { id: 2, title: "Course B", status: "Menunggu Konfirmasi" },
+  { id: 3, title: "Course C", status: "Menunggu Konfirmasi" },
+  { id: 4, title: "Course D", status: "Menunggu Konfirmasi" },
+  { id: 5, title: "Course E", status: "Menunggu Konfirmasi" },
+  { id: 6, title: "Course F", status: "Menunggu Konfirmasi" },
+];
 
-  // Fungsi untuk mengubah tab aktif
+const DashboardAdmin = () => {
+  // State untuk tab status (permintaan, diterima, ditolak)
+  const [activeTab, setActiveTab] = useState('permintaan');
+  const location = useLocation(); // Untuk mengetahui URL saat ini
+
+  const section = location.pathname.includes('course') ? 'course' : 'mentor'; // Tentukan apakah tampilkan course atau mentor
+
+  // Filter data berdasarkan tab aktif
+  const filteredMentors = mentors.filter((mentor) => {
+    if (activeTab === 'permintaan') return mentor.status === 'Menunggu Konfirmasi';
+    if (activeTab === 'diterima') return mentor.status === 'Diterima';
+    if (activeTab === 'ditolak') return mentor.status === 'Ditolak';
+    return true;
+  });
+
+  const filteredCourses = courses.filter((course) => {
+    if (activeTab === 'permintaan') return course.status === 'Menunggu Konfirmasi';
+    if (activeTab === 'diterima') return course.status === 'Diterima';
+    if (activeTab === 'ditolak') return course.status === 'Ditolak';
+    return true;
+  });
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
@@ -24,35 +51,38 @@ const DashboardAdmin = () => {
     <div className="p-8 bg-gray-100 min-h-screen">
       {/* Header */}
       <header className="flex justify-between items-center mb-8 mt-8">
-        <h2 className="text-3xl font-bold">Validation Mentor</h2>
-          <div className="flex space-x-4 rounded-xl ">
-            <button
-              onClick={() => handleTabClick('permintaan')}
-              className={`px-6 py-2 rounded-xl transition ${activeTab === 'permintaan' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
-            >
-              Permintaan
-            </button>
-            <button
-              onClick={() => handleTabClick('diterima')}
-              className={`px-6 py-2 rounded-xl transition ${activeTab === 'diterima' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
-            >
-              Diterima
-            </button>
-            <button
-              onClick={() => handleTabClick('ditolak')}
-              className={`px-6 py-2 rounded-xl transition ${activeTab === 'ditolak' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
-            >
-              Ditolak
-            </button>
-          </div>
-
+        <h2 className="text-3xl font-bold">{section === 'mentor' ? 'Validation Mentor' : 'Validation Course'}</h2>
+        <div className="flex space-x-4 rounded-xl">
+          <button
+            onClick={() => handleTabClick('permintaan')}
+            className={`px-6 py-2 rounded-xl transition ${activeTab === 'permintaan' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+          >
+            Permintaan
+          </button>
+          <button
+            onClick={() => handleTabClick('diterima')}
+            className={`px-6 py-2 rounded-xl transition ${activeTab === 'diterima' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+          >
+            Diterima
+          </button>
+          <button
+            onClick={() => handleTabClick('ditolak')}
+            className={`px-6 py-2 rounded-xl transition ${activeTab === 'ditolak' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+          >
+            Ditolak
+          </button>
+        </div>
       </header>
 
-      {/* Mentor Cards */}
+      {/* Validation Cards */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {mentors.map((mentor) => (
-          <MentorCard key={mentor.id} mentor={mentor} />
-        ))}
+        {section === 'mentor'
+          ? filteredMentors.map((mentor) => (
+              <ValidationCard key={mentor.id} data={mentor} type="mentor" />
+            ))
+          : filteredCourses.map((course) => (
+              <ValidationCard key={course.id} data={course} type="course" />
+            ))}
       </section>
     </div>
   );
