@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import api from './api';
-import DashboardAdmin from './pages/admin/dashboard/DashboardAdmin';
-import ValidationMentor from './pages/admin/dashboard/ValidationMentor';
+
+
+import DashboardContent from './pages/mentor/dashboard/DashboardUser';
 
 
     function App() {
         return (
           <BrowserRouter> {/* Wrap the Routes component with BrowserRouter */}
             <Routes>
-                <Route path="/admin/dashboard" element={<DashboardAdmin />} />
-                <Route path="/admin/validation-mentor" element={<ValidationMentor/>} />
+                <Route path="/dashboard" element={<DashboardContent />} />  
             </Routes>
           </BrowserRouter>
         );
