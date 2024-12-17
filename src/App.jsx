@@ -9,6 +9,7 @@ import DashboardAdmin from './pages/admin/dashboard/DashboardAdmin';
 import ValidationMentor from './pages/admin/dashboard/ValidationMentor';
 import CourseValidation from './pages/admin/course-validation/CourseValidation';
 import ValidationMentorCourse from './pages/admin/course-validation/CourseDetail';
+import ChatPage from './pages/admin/chat/ChatAdmin';
 
 
 
@@ -29,6 +30,7 @@ import ValidationMentorCourse from './pages/admin/course-validation/CourseDetail
                   <Route path="/admin/validation-mentor" element={<ValidationMentor/>} />
                   <Route path="/admin/validation-course" element={<CourseValidation/>} />
                   <Route path="/admin/validation-course/detail" element={<ValidationMentorCourse/>} />
+                  <Route path="/admin/chat" element={<ChatPage/>} />
               </Routes>
               </div>
             </div>
