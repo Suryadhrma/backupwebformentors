@@ -6,29 +6,37 @@ const CourseMentor = () => {
   const [classes] = useState([
     {
       id: 1,
-      title: 'Class 1',
-      traineeName: 'John Doe',
+      title: 'Program A',
+      welcomeMessage: 'Selamat datang di Program A! Siap untuk belajar?',
+      participantCount: 30,
+      averageRating: 4.5,  // Rating rata-rata dari peserta
       progress: 75,
       image: 'https://via.placeholder.com/150',
     },
     {
       id: 2,
-      title: 'Class 2',
-      traineeName: 'Jane Smith',
+      title: 'Program B',
+      welcomeMessage: 'Selamat datang di Program B! Ayo mulai perjalanan belajar ini!',
+      participantCount: 25,
+      averageRating: 5, // Rating sempurna
       progress: 100,
       image: 'https://via.placeholder.com/150',
     },
     {
       id: 3,
-      title: 'Class 3',
-      traineeName: 'Steve Johnson',
+      title: 'Program C',
+      welcomeMessage: 'Selamat datang di Program C! Semoga sukses!',
+      participantCount: 20,
+      averageRating: 1,  // Rating rata-rata
       progress: 50,
       image: 'https://via.placeholder.com/150',
     },
     {
       id: 4,
-      title: 'Class 4',
-      traineeName: 'Emma Watson',
+      title: 'Program D',
+      welcomeMessage: 'Selamat datang di Program D! Let\'s begin!',
+      participantCount: 15,
+      averageRating: 4,  // Rating 4 bintang
       progress: 80,
       image: 'https://via.placeholder.com/150',
     },
@@ -43,7 +51,7 @@ const CourseMentor = () => {
   return (
     <div className="p-5 font-montserrat text-black">
       <header className="flex flex-col items-start mb-8 mt-8">
-        <h2 className="text-3xl font-bold">My Classes</h2>
+        <h2 className="text-3xl font-bold">My Courses</h2>
       </header>
 
       <div className="flex flex-wrap justify-evenly mt-20">
@@ -52,7 +60,7 @@ const CourseMentor = () => {
             key={cls.id}
             cls={cls}
             onClick={() => handleCardClick(cls.id)} // Passing the onClick handler
-            showProgressBar={false} // Here we don't need the progress bar
+            showProgressBar={false} // Disabling the progress bar on CourseMentor page
           />
         ))}
       </div>
