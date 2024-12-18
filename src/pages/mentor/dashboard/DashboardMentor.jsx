@@ -48,10 +48,11 @@ const DashboardContent = () => {
 
   return (
     <div className="p-5 font-montserrat text-black">
-      <div className="absolute top-20 left-5 flex justify-between items-center mb-5">
-        <h2 className="text-4xl font-bold">My Activity</h2>
-        <div className="flex gap-4">
-          <button
+      {/* Header */}
+      <header className="flex justify-between items-center mb-8 mt-8">
+      <h2 className="text-3xl font-bold">Validation Mentor</h2>
+        <div className="flex space-x-4 rounded-xl">
+        <button
             className={`py-2 px-4 rounded-full text-lg ${activeTab === 'progress' ? 'bg-teal-200 font-bold' : 'bg-gray-300'} transition-all`}
             onClick={() => setActiveTab('progress')}
           >
@@ -64,7 +65,7 @@ const DashboardContent = () => {
             Selesai
           </button>
         </div>
-      </div>
+      </header>
 
       <div className="flex flex-wrap gap-7 justify-evenly mt-20">
         {filteredClasses.map((cls, index) => (

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-rou
 import api from './api';
 
 
-import DashboardContent from './pages/mentor/dashboard/DashboardUser';
+import DashboardContent from './pages/mentor/dashboard/DashboardMentor';
 
 
     function App() {
