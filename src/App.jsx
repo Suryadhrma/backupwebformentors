@@ -14,6 +14,7 @@ import CoinMe from './pages/mentor/profile/Exchange/CoinMeMentor';
 import CoinMeDetails from './pages/mentor/profile/Exchange/CoinMeDetailMentor';
 import MoneyMe from './pages/mentor/profile/Exchange/MoneyMeMentor';
 import MoneyMeDetailMentor from './pages/mentor/profile/Exchange/MoneyMeDetailMentor';
+import CreateAds from './pages/mentor/ads/CreateAdsMentor';
 
 
     function App() {
@@ -31,6 +32,7 @@ import MoneyMeDetailMentor from './pages/mentor/profile/Exchange/MoneyMeDetailMe
                 <Route path="/mentor/coinme/detail" element={<CoinMeDetails />} />
                 <Route path="/mentor/moneyme" element={<MoneyMe />} />
                 <Route path="/mentor/moneyme/detail" element={<MoneyMeDetailMentor />} />
+                <Route path="/mentor/create-ads" element={<CreateAds />} />
             </Routes>
           </BrowserRouter>
         );
