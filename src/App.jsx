@@ -4,13 +4,17 @@ import api from './api';
 
 
 import DashboardContent from './pages/mentor/dashboard/DashboardMentor';
+import ClassesMentor from './pages/mentor/dashboard/ClassesMentor';
+import IsiLaporanMentor from './pages/mentor/dashboard/IsiLaporanMentor';
 
 
     function App() {
         return (
           <BrowserRouter> {/* Wrap the Routes component with BrowserRouter */}
             <Routes>
-                <Route path="/dashboard" element={<DashboardContent />} />  
+                <Route path="/dashboard" element={<DashboardContent />} />
+                <Route path="/classes" element={<ClassesMentor />} />
+                <Route path="/laporan-mentor" element={<IsiLaporanMentor />} />    
             </Routes>
           </BrowserRouter>
         );

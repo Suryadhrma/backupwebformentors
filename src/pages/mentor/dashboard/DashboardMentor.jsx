@@ -1,5 +1,8 @@
+// src/pages/DashboardContent.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ClassCard from '../../../components/mentor/MentorCard'; // Import the new ClassCard component
 
 const DashboardContent = () => {
   // Hardcoded classes data
@@ -33,7 +36,7 @@ const DashboardContent = () => {
       image: 'https://via.placeholder.com/150',
     },
   ]);
-  
+
   const [activeTab, setActiveTab] = useState('progress'); // Default tab is 'progress'
   const navigate = useNavigate();
 
@@ -49,10 +52,10 @@ const DashboardContent = () => {
   return (
     <div className="p-5 font-montserrat text-black">
       {/* Header */}
-      <header className="flex justify-between items-center mb-8 mt-8">
-      <h2 className="text-3xl font-bold">Validation Mentor</h2>
-        <div className="flex space-x-4 rounded-xl">
-        <button
+      <header className="flex flex-col items-start mb-8 mt-8">
+        <h2 className="text-3xl font-bold">My Activity</h2>
+        <div className="flex space-x-4 rounded-xl ml-auto mt-4">
+          <button
             className={`py-2 px-4 rounded-full text-lg ${activeTab === 'progress' ? 'bg-teal-200 font-bold' : 'bg-gray-300'} transition-all`}
             onClick={() => setActiveTab('progress')}
           >
@@ -67,24 +70,14 @@ const DashboardContent = () => {
         </div>
       </header>
 
-      <div className="flex flex-wrap gap-7 justify-evenly mt-20">
-        {filteredClasses.map((cls, index) => (
-          <div
-            key={index}
-            className="w-72 bg-white border border-gray-300 rounded-lg p-6 shadow-lg flex flex-col items-center cursor-pointer"
-            onClick={() => handleCardClick(cls.id)}
-            role="button"
-            tabIndex={0}
-            onKeyPress={(e) => e.key === 'Enter' && handleCardClick(cls.id)}
-          >
-            <img src={cls.image} alt={cls.title} className="w-full h-auto rounded-md" />
-            <h3 className="text-xl font-semibold mt-4">{cls.title}</h3>
-            <p className="text-sm mt-2">Nama Trainee: {cls.traineeName}</p>
-            <div className="mt-4 w-full">
-              <progress value={cls.progress} max="100" className="w-full h-2 bg-gray-200 rounded-full"></progress>
-              <span className="block mt-1 text-center">{cls.progress}%</span>
-            </div>
-          </div>
+      {/* Cards */}
+      <div className="flex flex-wrap justify-evenly mt-20">
+        {filteredClasses.map((cls) => (
+          <ClassCard
+            key={cls.id}
+            cls={cls}
+            onClick={() => handleCardClick(cls.id)} // Passing the onClick handler
+          />
         ))}
       </div>
     </div>
