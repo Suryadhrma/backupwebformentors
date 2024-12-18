@@ -48,15 +48,15 @@ const RegisterPart2 = () => {
       />
 
       {/* Left Section */}
-      <div className="relative left-[200px] flex w-1/2 flex-col items-center justify-center text-center">
+      <div className="relative flex w-1/2 flex-col items-center justify-center text-center">
         <img src={maskotImage} alt="Maskot" className="h-80 mb-4" />
         <p className="text-3xl font-medium text-gray-700">To be mentor, unlock</p>
         <p className="text-3xl font-medium text-gray-700">your potential</p>
       </div>
 
       {/* Right Section */}
-      <div className="relative left-[200px] w-lg rounded-lg bg-[#3DD598B2] px-11 py-16 mx-[200px]">
-        <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">
+      <div className="relative left-[45px] w-1/2 max-w-xl rounded-lg bg-[#3DD598B2] px-12 py-16 ml-15  ">
+        <h2 className="mb-24 text-center text-2xl font-semibold text-gray-800">
           Daftar Sebagai Mentor
         </h2>
         <form
@@ -65,7 +65,7 @@ const RegisterPart2 = () => {
         >
           <label
             htmlFor="cv"
-            className="block w-full cursor-pointer rounded-md bg-gray-200 py-2 text-center text-gray-700"
+            className="relative block w-full cursor-pointer rounded-md bg-white py-2 pr-[365px] text-center text-gray-400 bottom-16 "
           >
             {fileNames.cv}
           </label>
@@ -75,12 +75,12 @@ const RegisterPart2 = () => {
             name="cv"
             onChange={(e) => handleFileChange(e, "cv")}
             accept=".pdf,.doc,.docx"
-            className="hidden"
+            className="hidden "
           />
 
           <label
             htmlFor="ktp"
-            className="block w-full cursor-pointer rounded-md bg-gray-200 py-2 text-center text-gray-700"
+            className="relative block w-full cursor-pointer rounded-md bg-white py-2 pr-[360px] text-center text-gray-400 bottom-14"
           >
             {fileNames.ktp}
           </label>
@@ -95,7 +95,7 @@ const RegisterPart2 = () => {
 
           <label
             htmlFor="photo"
-            className="block w-full cursor-pointer rounded-md bg-gray-200 py-2 text-center text-gray-700"
+            className="relative block w-full cursor-pointer rounded-md bg-white py-2 pr-[335px] text-center text-gray-400 bottom-12"
           >
             {fileNames.photo}
           </label>
@@ -112,17 +112,17 @@ const RegisterPart2 = () => {
             type="text"
             placeholder="Link Portofolio"
             required
-            className="w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none"
+            className="relative w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none bottom-10"
           />
           <input
             type="text"
             placeholder="Role Kamu (Bisa Lebih Dari 1)"
             required
-            className="w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none"
+            className="relative w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none bottom-8"
           />
           <button
             type="submit"
-            className="w-full rounded-full bg-green-500 py-2 text-white font-bold hover:bg-green-600 transition duration-300"
+            className="relative w-full rounded-full bg-white py-2 text-[#339989] font-bold hover:bg-grey-400 transition duration-300 top-5"
           >
             Next
           </button>
