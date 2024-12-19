@@ -23,12 +23,12 @@ const Sidebar = () => {
             {/* Sidebar - Hidden on mobile */}
             <div className={`w-64 bg-[#3DD598B2] text-white min-h-screen p-4 md:block ${isSidebarOpen ? 'block' : 'hidden'}`}>
 
-                {/* Menu Sections */}
-                <div className="space-y-2">
                         <img 
                         src={logo} 
                         className='w-[80%] item-center justify-center'
                         alt="rusa kejungkal" />
+                {/* Menu Sections */}
+                <div className="space-y-2">
                     <div>
                         <div className="space-y-2">
                             <button 
@@ -60,27 +60,9 @@ const Sidebar = () => {
                         </button>
                     </div>
 
-                    <div>
-                        <div className="space-y-2 mt-16">
-                            <button 
-                                onClick={() => handleNavigation('/admin/video', 'Video List')}
-                                className="flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10"
-                            >
-                                <Settings className="w-5 h-5" />
-                                <span>Setting</span>
-                            </button>
-                            <button 
-                                onClick={() => navigate('/admin/music', 'Music List')}
-                                className="flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10"
-                            >
-                                <CircleHelp className="w-5 h-5" />
-                                <span>Help Center</span>
-                            </button>
-                        </div>
-                    </div>
 
                     <div>
-                        <p className="text-sm text-white/60 mb-2">General</p>
+                        <p className="text-sm text-white/60 mb-2 mt-24">General</p>
                         <div className="space-y-2">
                             <button 
                                 onClick={handleLogout}

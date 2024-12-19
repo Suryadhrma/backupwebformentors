@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import api from './api';
 import Sidebar from './components/Sidebar';
-import TopNavigation from './components/TopNavigation';
+import TopNavigation from './components/TopNavigationAdmin';
 
 
 import DashboardAdmin from './pages/admin/dashboard/DashboardAdmin';
