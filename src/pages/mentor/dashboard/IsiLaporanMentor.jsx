@@ -34,7 +34,7 @@ const IsiLaporanMentor = () => {
     <div className="bg-white p-6">
       {/* Header */}
       <header className="mb-8 mt-4">
-        <h2 className="text-3xl font-bold text-gray-800">Laporan Mentor</h2>
+        <h2 className="text-3xl font-bold text-gray-800">Laporan Aktivitas Mentor</h2>
       </header>
 
       {/* Form Laporan */}
