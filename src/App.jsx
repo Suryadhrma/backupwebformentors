@@ -17,6 +17,9 @@ import CoinMe from './pages/mentor/profile/Exchange/CoinMeMentor'
 import CoinMeDetails from './pages/mentor/profile/Exchange/CoinMeDetailMentor'
 import MoneyMe from './pages/mentor/profile/Exchange/MoneyMeMentor'
 import MoneyMeDetailMentor from './pages/mentor/profile/Exchange/MoneyMeDetailMentor'
+import Createads from './pages/mentor/ads/CreateAdsMentor'
+import HelpCenterMentor from './pages/mentor/help-center/HelpCenterMentor';
+import NotificationsMentor from './pages/mentor/notification/NotificationMentor';
 
 
 function App() {
@@ -96,7 +99,11 @@ function App() {
          <Route path="/mentor/coinme/detail" element={<Layout><CoinMeDetails /></Layout>} />
          <Route path="/mentor/moneyme" element={<Layout><MoneyMe /></Layout>} />
          <Route path="/mentor/moneyme/detail" element={<Layout><MoneyMeDetailMentor /></Layout>} />
-         <Route path="/mentor/create-ads" element={<Layout><CreateAds /></Layout>} />
+         <Route path="/mentor/create-ads" element={<Layout><Createads /></Layout>} />
+         <Route path="/mentor/help-center" element={<Layout><HelpCenterMentor /></Layout>} />
+         <Route path="/mentor/notification" element={<Layout><NotificationsMentor /></Layout>} />
+
+
         {/* Routes lainnya */}
       </Routes>
     </Router>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Coins, Bell, Plus, PlusCircle } from 'lucide-react';
+import { User, Coins, Bell, Plus, } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TopNavigationMentor = ({ currentPage, onSearchChange }) => {
@@ -30,6 +30,10 @@ const TopNavigationMentor = ({ currentPage, onSearchChange }) => {
     }
   };
 
+  const handleBellClick = () => {
+    navigate('/mentor/notification')
+  }
+
   return (
     <div className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,10 +51,18 @@ const TopNavigationMentor = ({ currentPage, onSearchChange }) => {
 
           {/* Buttons */}
           <div className="flex items-center space-x-4">
+
+            {/* Notification */}
+            <button
+            onClick={handleBellClick}
+            className="flex bg-[#7DE2D1] text-white font-bold rounded-xl p-2 items-center">
+              <Bell className="w-5 h-5" />
+            </button>
+
             {/* Balance Button */}
             <button className="flex bg-[#7DE2D1] text-white font-bold rounded-xl p-2 items-center">
-              <Coins className="w-5 h-5 text-yellow-500" />
-              {balance !== null ? `$${balance.toFixed(2)}` : 'Loading...'}
+              <Coins className="w-5 h-5 text-yellow-200 mr-2" />
+              {balance !== null ? `${balance.toFixed(2)}` : 'Loading...'}
               <Plus className="ml-2 bg-[#339989] rounded-md" />
             </button>
 
