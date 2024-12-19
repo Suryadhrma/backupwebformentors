@@ -9,8 +9,8 @@ const CreateAds = () => {
   const navigate = useNavigate();
 
   const handleCancle = () => {
-    navigate(-1)
-  }
+    navigate(-1);
+  };
 
   const handleCourseChange = (event) => {
     const selectedCourse = event.target.value;
@@ -59,9 +59,9 @@ const CreateAds = () => {
   }, [selectedCourse, selectedDuration]);
 
   return (
-    <div className="bg-white p-6">
+    <div className="bg-white p-6 sm:p-8 md:p-10">
       <header className="flex flex-col items-start mb-8 mt-8">
-        <h2 className="text-3xl font-bold">Money Me</h2>
+        <h2 className="text-3xl font-bold">Create Ads</h2>
       </header>
       <div className="space-y-4">
         <div>
@@ -101,15 +101,21 @@ const CreateAds = () => {
           </div>
         </div>
       </div>
-      <div className="relative left-[870px] mt-6 max-w-md bg-green-500 text-white px-4 py-2 rounded-lg flex justify-between items-center">
+      <div className="mt-6 max-w-md bg-green-500 text-white px-4 py-2 rounded-lg flex justify-between items-center">
         <span>Total Harga</span>
         <span className="font-bold">Rp. {totalPrice.toLocaleString()}</span>
       </div>
-      <div className="mt-4 flex justify-end space-x-4">
-        <button 
-        onClick={handleCancle}
-        className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg">Batal</button>
-        <button className="bg-green-500 text-white px-4 py-2 rounded-lg" onClick={handleSubmit}>
+      <div className="mt-4 flex flex-col sm:flex-row justify-end sm:space-x-4 space-y-4 sm:space-y-0">
+        <button
+          onClick={handleCancle}
+          className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg w-full sm:w-auto"
+        >
+          Batal
+        </button>
+        <button
+          onClick={handleSubmit}
+          className="bg-green-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto"
+        >
           Selesai
         </button>
       </div>

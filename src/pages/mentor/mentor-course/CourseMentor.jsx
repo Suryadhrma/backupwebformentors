@@ -45,7 +45,7 @@ const CourseMentor = () => {
   const navigate = useNavigate();
 
   const handleCardClick = (id) => {
-    navigate(`/classes/${id}`);
+    navigate(`/mentor/course/${id}`);
   };
 
   return (

@@ -12,7 +12,7 @@ const ClassesMentor = () => {
   };
 
   const handleLaporanClick = (id) => {
-    navigate(`/laporan-mentor/${id}`);
+    navigate(`/mentor/laporan-aktivitas-mentor/${id}`);
   };
 
   return (

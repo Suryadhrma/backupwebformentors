@@ -46,7 +46,7 @@ const DashboardContent = () => {
   });
 
   const handleCardClick = (id) => {
-    navigate(`/classes/${id}`);
+    navigate(`/mentor/classes/${id}`);
   };
 
   return (
@@ -73,10 +73,12 @@ const DashboardContent = () => {
       {/* Cards */}
       <div className="flex flex-wrap justify-evenly mt-20">
         {filteredClasses.map((cls) => (
-          <ClassCard
-            key={cls.id}
-            cls={cls}
-            onClick={() => handleCardClick(cls.id)} // Passing the onClick handler
+          <ClassCard 
+            key={cls.id} // Make sure to provide a unique key for each card
+            cls={cls} // Pass the correct class data
+            onClick={() => handleCardClick(cls.id)} // Pass the correct onClick handler
+            showProgressBar={true} 
+            isMyActivity={true}  // This will hide participant count and rating
           />
         ))}
       </div>

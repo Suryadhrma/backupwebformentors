@@ -50,7 +50,7 @@ const Exchange = () => {
       </header>
 
       {/* Bank Accounts Dropdown */}
-      <div className="bg-white max-w-xs p-4 mb-6">
+      <div className="max-w-xs p-4 mb-6">
         <h5 className="text-sm font-semibold mb-3">Pilih Rekening Perbankan</h5>
         <div className="relative flex items-center justify-between">
           {/* Dropdown for selecting bank */}
@@ -110,7 +110,7 @@ const Exchange = () => {
         </div>
 
         {/* Available Balance and Withdraw Button */}
-        <div className="bg-white text-center max-w-md p-4 rounded-lg mb-6 mx-auto">
+        <div className="text-center max-w-md p-4 rounded-lg mb-6 mx-auto">
             <div className="flex justify-between items-center">
                 <div>
                     <span className="text-sm font-semibold">Saldo Tersedia: {coinMeBalance} CoinMe</span>

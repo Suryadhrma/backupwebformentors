@@ -1,10 +1,15 @@
 import React from 'react';
 import { Users, Star } from 'lucide-react'; // Import icon dari lucide-react
 
-const ClassCard = ({ cls, onClick, showProgressBar = true }) => {
+const ClassCard = ({ cls, onClick, showProgressBar = true, isMyActivity = false }) => {
+  // Function to render stars for the rating
   const renderStars = (rating) => {
+    if (isNaN(rating) || rating < 0 || rating > 5) {
+      rating = 0;
+    }
+
     const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 !== 0 ? true : false;
+    const halfStar = rating % 1 !== 0;
     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
     return (
@@ -30,15 +35,21 @@ const ClassCard = ({ cls, onClick, showProgressBar = true }) => {
     >
       <div className="relative w-full">
         <img
-          src={cls.image || "/api/placeholder/400/320"} // Fallback to placeholder if no image is provided
+          src={cls.image || "/api/placeholder/400/320"}
           alt="Class Thumbnail"
           className="w-full h-auto rounded-md"
         />
       </div>
-      <h3 className="text-xl font-semibold mt-4">{cls.title}</h3>
-      <p className="text-sm mt-2 mb-12">{cls.welcomeMessage}</p> {/* Ucapan selamat datang */}
+      <div className="text-start item-start justify-start">
+        <h3 className="text-xl font-semibold mt-4">{cls.title}</h3> {/* Class Title */}
+        
+        {/* Change the text based on whether it's "My Activity" or "My Course" */}
+        <p className="text-sm mt-2 mb-12">
+          {isMyActivity ? `Nama Trainer: ${cls.traineeName}` : `Ucapan Selamat Datang di ${cls.title}`}
+        </p> {/* Trainer Name or Welcome Message */}
+      </div>
 
-      {/* Progress bar container (optional, hidden by default in CourseMentor page) */}
+      {/* Progress bar */}
       {showProgressBar && (
         <div className="mt-4 w-full">
           <div className="flex items-center justify-end">
@@ -53,20 +64,20 @@ const ClassCard = ({ cls, onClick, showProgressBar = true }) => {
         </div>
       )}
 
-      {/* Bottom right section (Jumlah peserta & review in right bottom corner) */}
-      <div className="absolute bottom-0 right-4 flex flex-col items-end space-y-2">
-        {/* Jumlah Peserta */}
-        <div className="flex items-center space-x-1">
-          <Users className="w-4 h-4 text-gray-500" />
-          <p className="text-sm">{cls.participantCount} Peserta</p>
-        </div>
+      {/* Hide participant count and rating if "My Activity" */}
+      {!isMyActivity && (
+        <div className="absolute bottom-0 right-4 flex flex-col items-end space-y-2">
+          <div className="flex items-center space-x-1">
+            <Users className="w-4 h-4 text-gray-500" />
+            <p className="text-sm">{cls.participantCount} Peserta</p>
+          </div>
 
-        {/* Rating bintang (Review) */}
-        <div className="flex items-center space-x-1 mt-1">
-          <Star className="w-4 h-4 text-yellow-400" />
-          {renderStars(cls.averageRating)} {/* Rata-rata rating dalam bintang */}
+          <div className="flex items-center space-x-1 mt-1">
+            <Star className="w-4 h-4 text-yellow-400" />
+            {renderStars(cls.averageRating)}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

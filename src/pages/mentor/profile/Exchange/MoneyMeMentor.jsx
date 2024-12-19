@@ -44,7 +44,7 @@ const MoneyMe = () => {
 
   // Handle Tarik MoneyMe button click
   const handleWithdraw = () => {
-    navigate('mentor/moneyme/detail'); // Placeholder action
+    navigate('/mentor/moneyme/detail'); // Placeholder action
   };
 
   return (

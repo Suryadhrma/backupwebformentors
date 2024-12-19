@@ -19,7 +19,7 @@ const SilabusMentor = () => {
   const [isAccOpen, setIsAccOpen] = useState(false);
 
   const handleCancel = () => {
-    navigate(-1)
+    navigate(-1);
     console.log("Batal ditekan");
   };
 
@@ -27,7 +27,7 @@ const SilabusMentor = () => {
     setIsAccOpen(true);
     console.log("Laporan selesai");
   };
-  
+
   const handleCloseModal = () => {
     setIsAccOpen(false);
   };
@@ -64,17 +64,20 @@ const SilabusMentor = () => {
 
       {/* Tugas Section */}
       <h2 className="text-2xl font-bold mb-4">Tugas</h2>
-      <div className="flex items-center justify-between mb-6">
+      <div className="relative mb-6">
         <textarea
           value={tugas}
           onChange={handleTugasChange}
           placeholder="Masukkan tugas yang akan diberikan"
           rows="4"
-          className="w-full p-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          className="w-full p-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 pr-10" // Added padding for the icon
         />
-        
-        {/* Paperclip Icon with file input */}
-        <label htmlFor="file-input" className="text-gray-500 cursor-pointer">
+
+        {/* File Input with Paperclip Icon inside the textarea */}
+        <label
+          htmlFor="file-input"
+          className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+        >
           <Paperclip size={20} />
         </label>
         <input
@@ -105,8 +108,8 @@ const SilabusMentor = () => {
           variant="primary"
         />
       </div>
-      {isAccOpen&& (
-        <Accept isOpen={isAccOpen} onClose={handleCloseModal}/>
+      {isAccOpen && (
+        <Accept isOpen={isAccOpen} onClose={handleCloseModal} />
       )}
     </div>
   );
