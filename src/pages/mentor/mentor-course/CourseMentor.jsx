@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ClassCard from '../../../components/mentor/MentorCard'; // Import the ClassCard component
 
-const CourseMentor = () => {
+const CourseMentor = ({ searchTerm }) => {
   const [classes] = useState([
     {
       id: 1,
       title: 'Program A',
       welcomeMessage: 'Selamat datang di Program A! Siap untuk belajar?',
       participantCount: 30,
-      averageRating: 4.5,  // Rating rata-rata dari peserta
+      averageRating: 4.5,
       progress: 75,
       image: 'https://via.placeholder.com/150',
     },
@@ -18,7 +18,7 @@ const CourseMentor = () => {
       title: 'Program B',
       welcomeMessage: 'Selamat datang di Program B! Ayo mulai perjalanan belajar ini!',
       participantCount: 25,
-      averageRating: 5, // Rating sempurna
+      averageRating: 5,
       progress: 100,
       image: 'https://via.placeholder.com/150',
     },
@@ -27,7 +27,7 @@ const CourseMentor = () => {
       title: 'Program C',
       welcomeMessage: 'Selamat datang di Program C! Semoga sukses!',
       participantCount: 20,
-      averageRating: 1,  // Rating rata-rata
+      averageRating: 1,
       progress: 50,
       image: 'https://via.placeholder.com/150',
     },
@@ -36,11 +36,29 @@ const CourseMentor = () => {
       title: 'Program D',
       welcomeMessage: 'Selamat datang di Program D! Let\'s begin!',
       participantCount: 15,
-      averageRating: 4,  // Rating 4 bintang
+      averageRating: 4,
       progress: 80,
       image: 'https://via.placeholder.com/150',
     },
   ]);
+
+  const filteredClasses = classes.filter((cls) => {
+    if (!cls || !cls.title || !cls.welcomeMessage) {
+      return false; // Jika data cls tidak valid, kita lewati
+    }
+  
+    const title = cls.title.toLowerCase();
+    const welcomeMessage = cls.welcomeMessage.toLowerCase();
+    const searchLowerCase = searchTerm?.toLowerCase() || ''; // Pengecekan untuk searchTerm
+  
+    return (
+      title.includes(searchLowerCase) || 
+      welcomeMessage.includes(searchLowerCase)
+    );
+  });
+  
+  
+  
 
   const navigate = useNavigate();
 
@@ -55,12 +73,12 @@ const CourseMentor = () => {
       </header>
 
       <div className="flex flex-wrap justify-evenly mt-20">
-        {classes.map((cls) => (
+        {filteredClasses.map((cls) => (
           <ClassCard
             key={cls.id}
             cls={cls}
-            onClick={() => handleCardClick(cls.id)} // Passing the onClick handler
-            showProgressBar={false} // Disabling the progress bar on CourseMentor page
+            onClick={() => handleCardClick(cls.id)}
+            showProgressBar={false}
           />
         ))}
       </div>
