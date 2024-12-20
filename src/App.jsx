@@ -10,6 +10,8 @@ import ValidationMentor from './pages/admin/dashboard/ValidationMentor';
 import CourseValidation from './pages/admin/course-validation/CourseValidation';
 import ValidationMentorCourse from './pages/admin/course-validation/CourseDetail';
 import ChatPage from './pages/admin/chat/ChatAdmin';
+import VoucherGenerator from './pages/admin/voucher/Voucher';
+import NotificationsGenerator from './pages/admin/notification/Notification';
 
 
 
@@ -31,6 +33,8 @@ import ChatPage from './pages/admin/chat/ChatAdmin';
                   <Route path="/admin/validation-course" element={<CourseValidation/>} />
                   <Route path="/admin/validation-course/detail" element={<ValidationMentorCourse/>} />
                   <Route path="/admin/chat" element={<ChatPage/>} />
+                  <Route path="/admin/voucher-generator" element={<VoucherGenerator/>} />
+                  <Route path="/admin/notification-generator" element={<NotificationsGenerator/>} />
               </Routes>
               </div>
             </div>
