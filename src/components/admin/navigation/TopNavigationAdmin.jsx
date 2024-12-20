@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { User, Coins, Bell, Plus, } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const TopNavigationMentor = ({ currentPage, onSearchChange }) => {
+const TopNavigationAdmin = ({ currentPage, onSearchChange }) => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [balance, setBalance] = useState(null);
@@ -87,4 +87,4 @@ const TopNavigationMentor = ({ currentPage, onSearchChange }) => {
   );
 };
 
-export default TopNavigationMentor;
+export default TopNavigationAdmin;

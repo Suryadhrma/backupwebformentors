@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Send, Paperclip } from 'lucide-react';
 
-// Sample data for multiple conversations with other people
 const chatList = [
   {
     id: 1,
     name: 'John Doe',
-    profilePic: 'https://via.placeholder.com/50',  // Replace with actual profile image URL
+    profilePic: 'https://via.placeholder.com/50',
     lastMessage: 'How are you?',
     time: '12:30',
     messages: [
@@ -17,7 +16,7 @@ const chatList = [
   {
     id: 2,
     name: 'Jane Smith',
-    profilePic: 'https://via.placeholder.com/50',  // Replace with actual profile image URL
+    profilePic: 'https://via.placeholder.com/50',
     lastMessage: 'Let\'s meet up tomorrow!',
     time: '11:45',
     messages: [
@@ -29,8 +28,8 @@ const chatList = [
 
 const ChatPage = () => {
   const [message, setMessage] = useState('');
-  const [selectedChat, setSelectedChat] = useState(chatList[0]); // Default to first chat
-  const [selectedFile, setSelectedFile] = useState(null); // Track selected file
+  const [selectedChat, setSelectedChat] = useState(chatList[0]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleSendMessage = () => {
     if (message.trim() !== '' || selectedFile) {
@@ -39,7 +38,7 @@ const ChatPage = () => {
         text: message,
         sender: 'You',
         time: new Date().toLocaleTimeString(),
-        file: selectedFile // Attach file if selected
+        file: selectedFile
       };
       
       setSelectedChat({
@@ -47,7 +46,7 @@ const ChatPage = () => {
         messages: [...selectedChat.messages, newMessage]
       });
       setMessage('');
-      setSelectedFile(null); // Clear file after sending
+      setSelectedFile(null);
     }
   };
 
@@ -63,12 +62,11 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen relative">
       {/* Main Chat Window */}
       <div className="flex-1 flex flex-col bg-white shadow-xl">
-
         {/* Message Window */}
-        <div className="flex-1 overflow-y-auto px-4 py-3">
+        <div className="flex-1 overflow-y-auto px-4 py-3 mb-20">
           {selectedChat.messages.map((msg) => (
             <div
               key={msg.id}
@@ -79,7 +77,7 @@ const ChatPage = () => {
                 <div className="mr-3">
                   <img
                     className="w-10 h-10 rounded-full"
-                    src={selectedChat.profilePic} // Use the chat's profile picture for the other person
+                    src={selectedChat.profilePic}
                     alt={`${msg.sender} Profile`}
                   />
                 </div>
@@ -90,71 +88,54 @@ const ChatPage = () => {
                 className={`max-w-[70%] px-4 py-2 rounded-lg ${msg.sender === 'You' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-800'}`}
               >
                 {msg.text}
-                {/* If a file is attached, display the file name */}
-                {msg.file && (
-                  <div className="mt-2 text-sm text-gray-600">
-                    <a href={URL.createObjectURL(msg.file)} target="_blank" rel="noopener noreferrer" className="text-blue-600">
-                      {msg.file.name}
-                    </a>
-                  </div>
-                )}
               </div>
-
-              {/* For the sender "You", we can omit the profile picture as it’s assumed to be you */}
-              {msg.sender === 'You' && (
-                <div className="ml-3">
-                  <img
-                    className="w-10 h-10 rounded-full"
-                    src="your-profile-pic.jpg" // Replace with your own profile picture
-                    alt="Your Profile"
-                  />
-                </div>
-              )}
             </div>
           ))}
         </div>
 
         {/* Input Box */}
-        <div className="flex items-center px-4 py-3 border-t w-[54%] fixed bottom-0 items-center px-4 py-3 border-t bg-gray-100">
-          <input
-            type="text"
-            className="flex-1 px-4 py-2 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Type a message..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
+        <div className="absolute bottom-0 left-0 w-[calc(100%-300px)] bg-gray-100 border-t">
+          <div className="flex items-center px-4 py-3">
+            <input
+              type="text"
+              className="flex-1 px-4 py-2 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Type a message..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
 
-          {/* Attachment Button */}
-          <label htmlFor="file-upload" className="ml-3 cursor-pointer">
-            <Paperclip size={20} className="text-gray-500 hover:text-blue-500" />
-          </label>
-          <input
-            type="file"
-            id="file-upload"
-            className="hidden"
-            onChange={handleFileChange}
-            accept=".jpg,.jpeg,.png,.pdf,.mp4"
-          />
+            {/* Attachment Button */}
+            <label htmlFor="file-upload" className="ml-3 cursor-pointer">
+              <Paperclip size={20} className="text-gray-500 hover:text-blue-500" />
+            </label>
+            <input
+              type="file"
+              id="file-upload"
+              className="hidden"
+              onChange={handleFileChange}
+              accept=".jpg,.jpeg,.png,.pdf,.mp4"
+            />
 
-          {/* Send Button */}
-          <button
-            className="text-blue-500 hover:text-blue-700 ml-3"
-            onClick={handleSendMessage}
-          >
-            <Send size={20} />
-          </button>
+            {/* Send Button */}
+            <button
+              className="text-blue-500 hover:text-blue-700 ml-3"
+              onClick={handleSendMessage}
+            >
+              <Send size={20} />
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Right Sidebar (Chat List) */}
-      <div className="w-[300px] bg-[#a1e3d8] border-l">
+      <div className="w-[300px] bg-[#a1e3d8] border-l h-screen overflow-y-auto">
         <div className="flex flex-col">
           {/* Chat List */}
           {chatList.map((chat) => (
             <div
               key={chat.id}
               className="flex items-center px-4 py-3 border-b hover:bg-gray-200 cursor-pointer"
-              onClick={() => setSelectedChat(chat)} // Set the clicked chat as the active chat
+              onClick={() => setSelectedChat(chat)}
             >
               <img
                 className="w-10 h-10 rounded-full mr-3"

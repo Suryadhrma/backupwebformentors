@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Home, Mail, Layers, LogOut } from 'lucide-react';
-import logo from '../assets/rusatransparan.png';
+import { Home, Mail, Layers, LogOut, Ticket, BellPlus } from 'lucide-react';
+import logo from '../../../assets/rusatransparan.png';
 
 const SidebarAdmin = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -44,14 +44,18 @@ const SidebarAdmin = () => {
                     {isProfileDropdownOpen && (
                         <div className="absolute top-full left-0 mt-2 w-full bg-white text-black rounded shadow-lg z-50">
                             <button 
-                                onClick={() => handleNavigation('/admin/voucher-generator', 'Voucher Generator')}
-                                className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-                                Voucher Generator
+                                onClick={() => navigate('/admin/voucher-generator', 'Voucher')}
+                                className="flex items-center mx-auto mb-2 space-x-2 w-full p-2 rounded hover:bg-[#27DEBF]"
+                            >
+                                <Ticket className="w-5 h-5" />
+                                <span>Voucher Generator</span>
                             </button>
                             <button 
-                                onClick={() => handleNavigation('/admin/notification-generator', 'Notification Generator')}
-                                className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-                                Notification Generator
+                                onClick={() => navigate('/admin/notification-generator', 'Notification')}
+                                className="flex items-center space-x-2 w-full p-2 rounded hover:bg-[#27DEBF]"
+                            >
+                                <BellPlus className="w-5 h-5" />
+                                <span>Notification Generator</span>
                             </button>
                         </div>
                     )}

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import api from './api';
-import SidebarAdmin from './components/SidebarAdmin';
-import TopNavigationAdmin from './components/TopNavigationAdmin';
+import SidebarAdmin from './components/admin/navigation/SidebarAdmin';
+import TopNavigationAdmin from './components/admin/navigation/TopNavigationAdmin';
 
 
 import DashboardAdmin from './pages/admin/dashboard/DashboardAdmin';
-import ValidationMentor from './pages/admin/dashboard/ValidationMentor';
-import CourseValidation from './pages/admin/course-validation/CourseValidation';
-import ValidationMentorCourse from './pages/admin/course-validation/CourseDetail';
+import ValidationMentor from './pages/admin/dashboard/ValidationMentorAdmin';
+import CourseValidation from './pages/admin/course-validation/CourseValidationAdmin';
+import ValidationMentorCourse from './pages/admin/course-validation/CourseDetailAdmin';
 import ChatPage from './pages/admin/chat/ChatAdmin';
-import VoucherGenerator from './pages/admin/voucher/Voucher';
-import NotificationsGenerator from './pages/admin/notification/Notification';
+import VoucherGenerator from './pages/admin/voucher/VoucherAdmin';
+import NotificationsGenerator from './pages/admin/notification/NotificationAdmin';
 
 
 
@@ -26,7 +26,7 @@ import NotificationsGenerator from './pages/admin/notification/Notification';
               <div className='flex-1 overflow-hidden'>
               <TopNavigationAdmin />
               </div>
-              <div className='p-8 bg-gray-100'>
+              <div className=' p-2 bg-gray-100'>
               <Routes>
                   <Route path="/admin/dashboard" element={<DashboardAdmin />} />
                   <Route path="/admin/validation-mentor" element={<ValidationMentor/>} />

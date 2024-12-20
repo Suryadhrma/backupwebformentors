@@ -1,6 +1,6 @@
 // pages/admin/ValidationCourseMentor.jsx
 import React, { useState } from 'react';
-import ValidationCard from '../../../components/admin/ValidationCard';
+import ValidationCard from '../../../components/admin/card/ValidationCardAdmin';
 
 const course = [
     { id: 1, name:"Jerome Polan", title: "Course A", status: "Menunggu Konfirmasi" },
@@ -36,19 +36,19 @@ const ValidationCourseMentor = () => {
         <div className="flex space-x-4 rounded-xl">
           <button
             onClick={() => handleTabClick('permintaan')}
-            className={`px-6 py-2 rounded-xl transition ${activeTab === 'permintaan' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+            className={`px-6 py-2 rounded-xl transition ${activeTab === 'permintaan' ? 'bg-[#27DEBF80] text-black font-semibold' : 'bg-gray-200'}`}
           >
             Permintaan
           </button>
           <button
             onClick={() => handleTabClick('diterima')}
-            className={`px-6 py-2 rounded-xl transition ${activeTab === 'diterima' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+            className={`px-6 py-2 rounded-xl transition ${activeTab === 'diterima' ? 'bg-[#27DEBF80] text-black font-semibold' : 'bg-gray-200'}`}
           >
             Diterima
           </button>
           <button
             onClick={() => handleTabClick('ditolak')}
-            className={`px-6 py-2 rounded-xl transition ${activeTab === 'ditolak' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+            className={`px-6 py-2 rounded-xl transition ${activeTab === 'ditolak' ? 'bg-[#27DEBF80] text-black font-semibold' : 'bg-gray-200'}`}
           >
             Ditolak
           </button>
