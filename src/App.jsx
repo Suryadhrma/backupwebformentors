@@ -49,7 +49,7 @@ function App() {
           element={
             <LayoutAdmin
               onSearchChange={handleSearchChange}
-              currentPage="/admin/dashboard"
+              currentPage="/"
             >
               <DashboardAdmin searchTerm={searchTerm} />
             </LayoutAdmin>
