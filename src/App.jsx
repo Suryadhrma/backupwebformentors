@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import api from './api';
-import Sidebar from './components/Sidebar';
-import TopNavigation from './components/TopNavigationAdmin';
+import SidebarAdmin from './components/SidebarAdmin';
+import TopNavigationAdmin from './components/TopNavigationAdmin';
 
 
 import DashboardAdmin from './pages/admin/dashboard/DashboardAdmin';
@@ -18,11 +18,11 @@ import ChatPage from './pages/admin/chat/ChatAdmin';
           <BrowserRouter>
           <div className='flex'>
             <div className='w-64 bg-blue-500 min-h-screen fixed'>
-              <Sidebar/>
+              <SidebarAdmin/>
             </div>
             <div className="flex-1 min-h-screen ml-64">
               <div className='flex-1 overflow-hidden'>
-              <TopNavigation />
+              <TopNavigationAdmin />
               </div>
               <div className='p-8 bg-gray-100'>
               <Routes>
