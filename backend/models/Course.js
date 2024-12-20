@@ -9,7 +9,9 @@ const courseSchema = new mongoose.Schema({
     participants: { type: Number, default: 0 },
     rating: { type: Number, default: 0 },
     meetings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Meeting' }],
-    status: { type: String, default: 'active' }, // Status course (active, completed)
+    status: { type: String, default: 'Menunggu Konfirmasi' }, // Status course
+    rejectionReason: { type: String }, // Alasan penolakan
+    mentor: { type: mongoose.Schema.Types.ObjectId, ref: 'Mentor' }, // Mentor yang membuat course
     createdAt: { type: Date, default: Date.now }
 });
 

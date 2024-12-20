@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerMentor, loginMentor, completeRegistration } = require('../controllers/authController');
+const { registerMentor, loginMentor, completeRegistration} = require('../controllers/authController');
 const { forgotPassword } = require('../controllers/passwordController');
 const upload = require('../middleware/upload');
 

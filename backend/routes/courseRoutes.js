@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { getCourses, createCourse, addMeeting, updateMeeting, markCourseComplete } = require('../controllers/courseController');
+const authMiddleware = require('../middleware/authMiddleware');
 
-// Routes
-router.get('/', getCourses); // Get all courses
-router.post('/', createCourse); // Create a new course
-router.post('/:id/meetings', addMeeting); // Add a meeting to a course
-// Update meeting syllabus
-router.put('/meetings/:meetingId', updateMeeting);
-
-router.put('/:id/complete', markCourseComplete);
+// Lindungi endpoint dengan middleware
+router.get('/', getCourses); // Tidak perlu autentikasi
+router.post('/', authMiddleware, createCourse); // Perlu autentikasi
+router.post('/:id/meetings', authMiddleware, addMeeting);
+router.put('/meetings/:meetingId', authMiddleware, updateMeeting);
+router.put('/:id/complete', authMiddleware, markCourseComplete);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const Course = require('../models/Course');
 const Meeting = require('../models/Meeting');
+const { createValidationRequest } = require('./courseValidationController');
 
 // Get all courses
 exports.getCourses = async (req, res) => {
@@ -11,17 +12,28 @@ exports.getCourses = async (req, res) => {
     }
 };
 
-// Create a new course
 exports.createCourse = async (req, res) => {
+    console.log(req.user); // Debugging: cek isi req.user
     const { title, description, photo, videoHighlight, price } = req.body;
+    const mentorId = req.user?.id; // Gunakan optional chaining
+
+    if (!mentorId) {
+        return res.status(401).json({ message: 'Unauthorized: Mentor ID not found in request' });
+    }
+
     try {
         const newCourse = new Course({ title, description, photo, videoHighlight, price });
         await newCourse.save();
+
+        // Create validation request
+        await createValidationRequest(mentorId, newCourse._id);
+
         res.status(201).json(newCourse);
     } catch (err) {
         res.status(500).json({ message: 'Error creating course', error: err });
     }
 };
+
 
 // Add a meeting to a course
 exports.addMeeting = async (req, res) => {
@@ -92,3 +104,5 @@ exports.markCourseComplete = async (req, res) => {
         res.status(500).json({ message: 'Error marking course as completed', error: err });
     }
 };
+
+
