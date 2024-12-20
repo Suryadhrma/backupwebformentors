@@ -12,7 +12,7 @@ const NotificationsGenerator = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className=" min-h-screen">
         {/* Header */}
         <header className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Generate Notification</h2>

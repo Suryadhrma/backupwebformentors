@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Coins, Bell, Plus, } from 'lucide-react';
+import { User, Coins, Bell, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TopNavigationAdmin = ({ currentPage, onSearchChange }) => {
@@ -14,11 +14,11 @@ const TopNavigationAdmin = ({ currentPage, onSearchChange }) => {
   }, []);
 
   const handleCourseClick = () => {
-    navigate('/mentor/create-course');
+    navigate('#');
   };
 
   const handleAdsClick = () => {
-    navigate('/mentor/create-ads');
+    navigate('#');
   };
 
   const handleSearchChange = (e) => {
@@ -31,8 +31,8 @@ const TopNavigationAdmin = ({ currentPage, onSearchChange }) => {
   };
 
   const handleBellClick = () => {
-    navigate('/mentor/notification')
-  }
+    navigate('/mentor/notification');
+  };
 
   return (
     <div className="bg-white shadow-sm">

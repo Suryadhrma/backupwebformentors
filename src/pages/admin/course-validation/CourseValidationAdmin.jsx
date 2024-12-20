@@ -29,7 +29,7 @@ const ValidationCourseMentor = () => {
   });
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
+    <div className="p-8 min-h-screen">
       {/* Header */}
       <header className="flex justify-between items-center mb-8 mt-8">
         <h2 className="text-3xl font-bold">Validation Course Mentor</h2>

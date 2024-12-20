@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ClassCard from '../../../components/mentor/MentorCard'; // Import the ClassCard component
 
-const DashboardContent = ({ searchTerm }) => {
+const DashboardMentor = ({ searchTerm }) => {
   // Hardcoded data for Activity
   const [activities] = useState([
     {
@@ -101,4 +101,4 @@ const DashboardContent = ({ searchTerm }) => {
   );
 };
 
-export default DashboardContent;
+export default DashboardMentor;

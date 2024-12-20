@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';  // Pastikan ini sesuai dengan path komponen Layout
-import DashboardContent from './pages/mentor/dashboard/DashboardMentor';
 
+// Layouts
+import LayoutAdmin from './components/layout/LayoutAdmin';
+import LayoutMentor from './components/layout/LayoutMentor';
 
-import CourseMentor from './pages/mentor/mentor-course/CourseMentor'
+// Halaman Admin
+import DashboardAdmin from './pages/admin/dashboard/DashboardAdmin';
+import ValidationMentor from './pages/admin/dashboard/ValidationMentorAdmin';
+import CourseValidationAdmin from './pages/admin/course-validation/CourseValidationAdmin';
+import ValidationMentorCourse from './pages/admin/course-validation/CourseDetailAdmin';
+import ChatAdmin from './pages/admin/chat/ChatAdmin'
+import VoucherGenerator from './pages/admin/voucher/VoucherAdmin';
+import NotificationsGenerator from './pages/admin/notification/NotificationAdmin';
+
+// Halaman Mentor
+import DashboardMentor from './pages/mentor/dashboard/DashboardMentor'
 import CLassesMentor from './pages/mentor/dashboard/ClassesMentor'
 import IsiLaporanMentor from './pages/mentor/dashboard/IsiLaporanMentor'
-import CreateCourse from './pages/mentor/mentor-create-course/CreateCourseMentor'
+import CourseMentor from './pages/mentor/mentor-course/CourseMentor'
+import CreateCourseMentor from './pages/mentor/mentor-create-course/CreateCourseMentor'
 import AddMateriMentor from './pages/mentor/mentor-create-course/AddMateriMentor';
 import SilabusMentor from './pages/mentor/mentor-create-course/SilabusMentor';
 import ChatMentor from './pages/mentor/chat/ChatMentor'
@@ -17,94 +29,286 @@ import CoinMe from './pages/mentor/profile/Exchange/CoinMeMentor'
 import CoinMeDetails from './pages/mentor/profile/Exchange/CoinMeDetailMentor'
 import MoneyMe from './pages/mentor/profile/Exchange/MoneyMeMentor'
 import MoneyMeDetailMentor from './pages/mentor/profile/Exchange/MoneyMeDetailMentor'
-import Createads from './pages/mentor/ads/CreateAdsMentor'
+import CreateAdsMentor from './pages/mentor/ads/CreateAdsMentor'
 import HelpCenterMentor from './pages/mentor/help-center/HelpCenterMentor';
 import NotificationsMentor from './pages/mentor/notification/NotificationMentor';
-
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Mendefinisikan handleSearchChange di dalam App
   const handleSearchChange = (term) => {
-    setSearchTerm(term); // Update state dengan search term yang baru
-    // Anda bisa menambahkan logika lebih lanjut untuk menangani pencarian di sini
-    console.log('Search term:', term); // Debugging untuk memastikan nilai term diperbarui
+    setSearchTerm(term);
   };
 
   return (
     <Router>
       <Routes>
-        {/* Mentor Routes */}
+        {/* Routes untuk Admin */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <LayoutAdmin
+              onSearchChange={handleSearchChange}
+              currentPage="/admin/dashboard"
+            >
+              <DashboardAdmin searchTerm={searchTerm} />
+            </LayoutAdmin>
+          }
+        />
+        <Route
+          path="/admin/validation-mentor"
+          element={
+            <LayoutAdmin
+              onSearchChange={handleSearchChange}
+              currentPage="/admin/validation-mentor"
+            >
+              <ValidationMentor searchTerm={searchTerm} />
+            </LayoutAdmin>
+          }
+        />
+        <Route
+          path="/admin/validation-course"
+          element={
+            <LayoutAdmin
+              onSearchChange={handleSearchChange}
+              currentPage="/admin/validation-course"
+            >
+              <CourseValidationAdmin searchTerm={searchTerm} />
+            </LayoutAdmin>
+          }
+        />
+        <Route
+          path="/admin/validation-course/detail"
+          element={
+            <LayoutAdmin
+              onSearchChange={handleSearchChange}
+              currentPage="/admin/validation-course/detail"
+            >
+              <ValidationMentorCourse searchTerm={searchTerm} />
+            </LayoutAdmin>
+          }
+        />
+        <Route
+          path="/admin/chat"
+          element={
+            <LayoutAdmin>
+              <ChatAdmin/>
+            </LayoutAdmin>
+          }
+        />
+        <Route
+          path="/admin/voucher-generator"
+          element={
+            <LayoutAdmin
+              onSearchChange={handleSearchChange}
+              currentPage="/admin/voucher-generator"
+            >
+              <VoucherGenerator searchTerm={searchTerm} />
+            </LayoutAdmin>
+          }
+        />
+        <Route
+          path="/admin/notification-generator"
+          element={
+            <LayoutAdmin
+              onSearchChange={handleSearchChange}
+              currentPage="/admin/notification-generator"
+            >
+              <NotificationsGenerator searchTerm={searchTerm} />
+            </LayoutAdmin>
+          }
+        />
+        
+
+        {/* Routes untuk Mentor */}
         <Route
           path="/mentor/dashboard"
           element={
-            <Layout onSearchChange={handleSearchChange}>  {/* Pass handler ke Layout */}
-              <DashboardContent searchTerm={searchTerm} />  {/* Pass searchTerm ke komponen anak */}
-            </Layout>
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/dashboard"
+            >
+              <DashboardMentor searchTerm={searchTerm} />
+            </LayoutMentor>
           }
         />
         <Route
           path="/mentor/classes"
           element={
-            <Layout>  {/* Pass handler ke Layout */}
-              <CLassesMentor/>  {/* Pass searchTerm ke komponen anak */}
-            </Layout>
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/classes"
+            >
+              <CLassesMentor searchTerm={searchTerm} />
+            </LayoutMentor>
           }
         />
         <Route
-          path="/mentor/isi-aktivitas-mentor"
+          path="/mentor/laporan-aktivitas-mentor"
           element={
-            <Layout>  {/* Pass handler ke Layout */}
-              <IsiLaporanMentor/>  {/* Pass searchTerm ke komponen anak */}
-            </Layout>
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/laporan-aktivitas-mentor"
+            >
+              <IsiLaporanMentor searchTerm={searchTerm} />
+            </LayoutMentor>
           }
         />
         <Route
           path="/mentor/course"
           element={
-            <Layout onSearchChange={handleSearchChange}>  {/* Pass handler ke Layout */}
-              <CourseMentor searchTerm={searchTerm} />  {/* Pass searchTerm ke komponen anak */}
-            </Layout>
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/course"
+            >
+              <CourseMentor searchTerm={searchTerm} />
+            </LayoutMentor>
           }
         />
-        <Route 
-          path="/mentor/create-course" 
+        <Route
+          path="/mentor/create-course"
           element={
-            <Layout>
-              <CreateCourse /> 
-            </Layout>
-            }
-        />
-        <Route 
-          path="/mentor/materi-pembelajaran" 
-          element={
-            <Layout>
-              <AddMateriMentor />
-            </Layout>
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/create-course"
+            >
+              <CreateCourseMentor searchTerm={searchTerm} />
+            </LayoutMentor>
           }
         />
-        <Route 
-          path="/mentor/isi-silabus" 
+        <Route
+          path="/mentor/materi-pembelajaran"
           element={
-            <Layout>
-              <SilabusMentor />
-            </Layout>
-          } 
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/materi-pembelajaran"
+            >
+              <AddMateriMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
         />
-         <Route path="/mentor/chat" element={<Layout> <ChatMentor /> </Layout>} />
-         <Route path="/mentor/edit-profile" element={<Layout><EditProfileMentor /></Layout>} />
-         <Route path="/mentor/exchange" element={<Layout><ExchangeMentor /></Layout>} />
-         <Route path="/mentor/coinme" element={<Layout><CoinMe/></Layout>} />
-         <Route path="/mentor/coinme/detail" element={<Layout><CoinMeDetails /></Layout>} />
-         <Route path="/mentor/moneyme" element={<Layout><MoneyMe /></Layout>} />
-         <Route path="/mentor/moneyme/detail" element={<Layout><MoneyMeDetailMentor /></Layout>} />
-         <Route path="/mentor/create-ads" element={<Layout><Createads /></Layout>} />
-         <Route path="/mentor/help-center" element={<Layout><HelpCenterMentor /></Layout>} />
-         <Route path="/mentor/notification" element={<Layout><NotificationsMentor /></Layout>} />
+        <Route
+          path="/mentor/isi-silabus"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/isi-silabus"
+            >
+              <SilabusMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/chat"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/chat"
+            >
+              <ChatMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/edit-profile"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/edit-profile"
+            >
+              <EditProfileMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/exchange"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/exchange"
+            >
+              <ExchangeMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/coinme"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/coinme"
+            >
+              <CoinMe searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/coinme/detail"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/coinme/detail"
+            >
+              <CoinMeDetails searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/moneyme"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/moneyme"
+            >
+              <MoneyMe searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/moneyme/detail"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/moneyme/detail"
+            >
+              <MoneyMeDetailMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/create-ads"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/create-ads"
+            >
+              <CreateAdsMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/help-center"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/help-center"
+            >
+              <HelpCenterMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
+        <Route
+          path="/mentor/notification"
+          element={
+            <LayoutMentor
+              onSearchChange={handleSearchChange}
+              currentPage="/mentor/notification"
+            >
+              <NotificationsMentor searchTerm={searchTerm} />
+            </LayoutMentor>
+          }
+        />
 
-
-        {/* Routes lainnya */}
       </Routes>
     </Router>
   );

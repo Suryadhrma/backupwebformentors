@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ActionButton from '../../../components/mentor/button/ActionButtonMentor';
 
-const CreateCourse = () => {
+const CreateCourseMentor = () => {
   const [projectInfo, setProjectInfo] = useState('');
   const [videoFile, setVideoFile] = useState(null);
   const [price, setPrice] = useState('');
@@ -130,4 +130,4 @@ const CreateCourse = () => {
   );
 };
 
-export default CreateCourse;
+export default CreateCourseMentor;
