@@ -22,9 +22,9 @@ const LoginAdmin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { fullName, email, password, confirmPassword } = formData;
+    const {email, password } = formData;
 
-    if (!fullName || !email || !password || !confirmPassword) {
+    if (!email || !password) {
       alert("Harap isi semua kolom.");
       return;
     }
