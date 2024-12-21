@@ -61,11 +61,20 @@ const LoginMentor = () => {
     <div className="relative flex h-screen items-center justify-center bg-white px-4">
       {/* Logo Rusa - Pojok Kiri Atas */}
       <img
-        onClick={handleAdmin}
+        
         src={logoRusa}
         alt="Logo"
         className="absolute top-0 left-0 m-4 h-28"
       />
+
+      <button
+      onClick={handleAdmin}>
+        pencet ini untuk login admin, buat testing aja le
+      </button>
+
+      
+
+
 
       {/* Left Section */}
       <div className="relative left-[200px] flex w-1/2 flex-col items-center justify-center text-center">
