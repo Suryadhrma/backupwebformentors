@@ -6,6 +6,7 @@ import LayoutAdmin from './components/layout/LayoutAdmin';
 import LayoutMentor from './components/layout/LayoutMentor';
 
 // Halaman Admin
+import LoginAdmin from './components/admin/login/LoginAdmin';
 import DashboardAdmin from './pages/admin/dashboard/DashboardAdmin';
 import ValidationMentor from './pages/admin/dashboard/ValidationMentorAdmin';
 import CourseValidationAdmin from './pages/admin/course-validation/CourseValidationAdmin';
@@ -17,6 +18,7 @@ import NotificationsGenerator from './pages/admin/notification/NotificationAdmin
 // Halaman Mentor
 import RegisterMentor from './components/mentor/register/register'
 import RegisterCopyMentor from './components/mentor/register/registercopy'
+import PrivacyPulici from './pages/mentor/privacypolicy/privacypolicy'
 import DashboardMentor from './pages/mentor/dashboard/DashboardMentor'
 import CLassesMentor from './pages/mentor/dashboard/ClassesMentor'
 import IsiLaporanMentor from './pages/mentor/dashboard/IsiLaporanMentor'
@@ -34,6 +36,7 @@ import MoneyMeDetailMentor from './pages/mentor/profile/Exchange/MoneyMeDetailMe
 import CreateAdsMentor from './pages/mentor/ads/CreateAdsMentor'
 import HelpCenterMentor from './pages/mentor/help-center/HelpCenterMentor';
 import NotificationsMentor from './pages/mentor/notification/NotificationMentor';
+import LoginMentor from './components/mentor/login/LoginMentor';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,6 +49,12 @@ function App() {
     <Router>
       <Routes>
         {/* Routes untuk Admin */}
+        <Route
+          path="/admin"
+          element={
+              <LoginAdmin />      
+          }
+        />
         <Route
           path="/admin/dashboard"
           element={
@@ -127,6 +136,13 @@ function App() {
         <Route
           path="/"
           element={
+              <LoginMentor />      
+          }
+        />
+
+        <Route
+          path="/mentor/register"
+          element={
               <RegisterMentor />      
           }
         />
@@ -134,6 +150,12 @@ function App() {
           path="/mentor/register/next"
           element={
               <RegisterCopyMentor />      
+          }
+        />
+        <Route
+          path="/mentor/register/pulici"
+          element={
+              <PrivacyPulici />      
           }
         />
         <Route
