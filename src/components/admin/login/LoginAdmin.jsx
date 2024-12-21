@@ -8,10 +8,8 @@ import { useNavigate } from "react-router-dom";
 const LoginAdmin = () => {
   const navigate =  useNavigate();
   const [formData, setFormData] = useState({
-    fullName: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -29,19 +27,12 @@ const LoginAdmin = () => {
       return;
     }
 
-    if (password !== confirmPassword) {
-      alert("Password dan Konfirmasi Password tidak cocok.");
-      return;
-    }
-
     navigate('/admin/dashboard')
-    console.log({ fullName, email, password });
+    console.log({ email, password });
 
     setFormData({
-      fullName: "",
       email: "",
       password: "",
-      confirmPassword: "",
     });
   };
 
