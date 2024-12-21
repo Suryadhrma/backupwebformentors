@@ -3,8 +3,10 @@ import logoRusa from "../../../assets/logorusa.png";
 import maskotImage from "../../../assets/maskot.png";
 import appleIcon from "../../../assets/apple.png";
 import googleIcon from "../../../assets/google.png";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate =  useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -16,6 +18,7 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +34,7 @@ const Register = () => {
       return;
     }
 
-    alert("Pendaftaran berhasil!");
+    navigate('/mentor/register/next')
     console.log({ fullName, email, password });
 
     setFormData({
@@ -109,6 +112,7 @@ const Register = () => {
             required
           />
           <button
+          
             type="submit"
             className="relative top-12 w-full rounded-3xl  bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#38A892]"
           >

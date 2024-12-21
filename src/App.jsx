@@ -15,6 +15,8 @@ import VoucherGenerator from './pages/admin/voucher/VoucherAdmin';
 import NotificationsGenerator from './pages/admin/notification/NotificationAdmin';
 
 // Halaman Mentor
+import RegisterMentor from './components/mentor/register/register'
+import RegisterCopyMentor from './components/mentor/register/registercopy'
 import DashboardMentor from './pages/mentor/dashboard/DashboardMentor'
 import CLassesMentor from './pages/mentor/dashboard/ClassesMentor'
 import IsiLaporanMentor from './pages/mentor/dashboard/IsiLaporanMentor'
@@ -121,6 +123,19 @@ function App() {
         
 
         {/* Routes untuk Mentor */}
+
+        <Route
+          path="/"
+          element={
+              <RegisterMentor />      
+          }
+        />
+        <Route
+          path="/mentor/register/next"
+          element={
+              <RegisterCopyMentor />      
+          }
+        />
         <Route
           path="/mentor/dashboard"
           element={
