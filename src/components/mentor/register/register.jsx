@@ -55,11 +55,12 @@ const Register = () => {
 
   const handleLogin = () => {
     navigate('/')
-  }
+  };
 
   return (
     <div className="relative flex h-screen items-center justify-center bg-white px-4">
       {/* Logo Rusa - Pojok Kiri Atas */}
+
       <img
         src={logoRusa}
         alt="Logo"

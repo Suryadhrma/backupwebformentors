@@ -52,10 +52,16 @@ const LoginMentor = () => {
     console.log("Apple Login triggered");
   };
 
+  const handleAdmin = () => {
+    navigate('/admin')
+  }
+
+
   return (
     <div className="relative flex h-screen items-center justify-center bg-white px-4">
       {/* Logo Rusa - Pojok Kiri Atas */}
       <img
+        onClick={handleAdmin}
         src={logoRusa}
         alt="Logo"
         className="absolute top-0 left-0 m-4 h-28"
