@@ -84,7 +84,7 @@ const LoginMentor = () => {
       </div>
 
       {/* Right Section */}
-      <div className="relative left-[100px] w-[900px] rounded-lg bg-[#3DD598B2] px-20 py-20 mx-[200px]">
+      <div className="relative left-[150px] w-[900px] rounded-lg bg-[#3DD598B2] px-20 py-20 mx-[200px]">
         <h2 className="mb-10 text-center text-2xl font-semibold text-gray-800">
           Login Sebagai Mentor
         </h2>

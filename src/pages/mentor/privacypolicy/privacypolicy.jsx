@@ -88,12 +88,12 @@ import { useNavigate } from "react-router-dom";
             <form onSubmit={handleFormSubmit} className="relative top-4 space-y-4">
 
             <button
-                onClick={handleClick}
-                type="submit"
-                className="relative top-[390px] w-full rounded-3xl  bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#38A892]"
-            >
-                Daftar
-            </button>
+            onClick={handleClick}
+            type="submit"
+            className="relative top-[400px] w-full rounded-3xl bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
+          >
+            Daftar
+          </button>
             </form>
         </div>
         </div>

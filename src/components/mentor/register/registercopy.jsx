@@ -57,7 +57,7 @@ const RegisterPart2 = () => {
       </div>
 
       {/* Right Section */}
-      <div className="relative left-[45px] w-1/2 max-w-xl rounded-lg bg-[#3DD598B2] px-12 py-16 ml-15  ">
+      <div className="relative left-[45px] w-1/2 max-w-xl rounded-lg bg-[#3DD598B2] px-11 py-14 ml-15  ">
         <h2 className="mb-24 text-center text-2xl font-semibold text-gray-800">
           Daftar Sebagai Mentor
         </h2>
@@ -124,7 +124,7 @@ const RegisterPart2 = () => {
           />
           <button
             type="submit"
-            className="relative top-12 w-full rounded-3xl bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
+            className="relative top-7 w-full rounded-3xl bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
           >
             Next
           </button>
