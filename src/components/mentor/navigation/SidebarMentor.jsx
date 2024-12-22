@@ -96,7 +96,7 @@ const SidebarMentor = () => {
                         className={`flex items-center space-x-2 w-full p-2 rounded hover:bg-white/10 ${location.pathname === '/mentor/course' && 'bg-white/10'}`}
                     >
                         <Layers className="w-5 h-5" />
-                        <span>Course Validation</span>
+                        <span>My Course</span>
                     </button>
 
                     <button 

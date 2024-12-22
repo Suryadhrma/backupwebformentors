@@ -75,7 +75,7 @@ const Register = () => {
       </div>
 
       {/* Right Section */}
-      <div className="relative left-[200px] w-md rounded-lg bg-[#3DD598B2] px-11 py-16 mx-[200px]">
+      <div className="relative left-[200px] w-md rounded-lg bg-[#3DD598B2] px-11 py-11 mx-[200px]">
         <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">
           Daftar Sebagai Mentor
         </h2>
@@ -117,16 +117,15 @@ const Register = () => {
             required
           />
           <button
-          
             type="submit"
-            className="relative top-12 w-full rounded-3xl  bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#38A892]"
+            className="relative top-12 w-full rounded-3xl bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
           >
             Daftar
           </button>
         </form>
 
         {/* Social Login Buttons */}
-        <div className="relative top-5 mt-6 text-center ">
+        <div className="relative top-9 mt-6 text-center ">
           <p className="relative top-8 text-gray-600 text-sm mb-4">Or social login</p>
           <div className="flex justify-center gap-4">
             <button
@@ -150,7 +149,7 @@ const Register = () => {
           </div>
         </div>
 
-        <p className="relative top-14 left-[0%] mt-6 text-sm text-gray-700 text-center  ">
+        <p className="relative top-10 left-[0%] mt-6 text-sm text-gray-700 text-center  ">
           Sudah punya akun?{" "}
           <a
             onClick={handleLogin}

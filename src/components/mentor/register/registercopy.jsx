@@ -124,7 +124,7 @@ const RegisterPart2 = () => {
           />
           <button
             type="submit"
-            className="relative w-full rounded-full bg-white py-2 text-[#339989] font-bold hover:bg-grey-400 transition duration-300 top-5"
+            className="relative top-12 w-full rounded-3xl bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
           >
             Next
           </button>

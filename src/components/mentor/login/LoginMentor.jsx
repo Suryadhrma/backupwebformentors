@@ -77,15 +77,15 @@ const LoginMentor = () => {
 
 
       {/* Left Section */}
-      <div className="relative left-[200px] flex w-1/2 flex-col items-center justify-center text-center">
+      <div className="relative left-12 flex w-1/2 flex-col items-center justify-center text-center">
         <img src={maskotImage} alt="Maskot" className="h-80 mb-4" />
         <p className="text-3xl font-medium text-gray-700">To be mentor, unlock</p>
         <p className="text-3xl font-medium text-gray-700">your potential</p>
       </div>
 
       {/* Right Section */}
-      <div className="relative left-[200px] w-md rounded-lg bg-[#3DD598B2] px-11 py-16 mx-[200px]">
-        <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">
+      <div className="relative left-[100px] w-[900px] rounded-lg bg-[#3DD598B2] px-20 py-20 mx-[200px]">
+        <h2 className="mb-10 text-center text-2xl font-semibold text-gray-800">
           Login Sebagai Mentor
         </h2>
         <form onSubmit={handleSubmit} className="relative top-4 space-y-4">
@@ -108,16 +108,15 @@ const LoginMentor = () => {
             required
           />
           <button
-          
             type="submit"
-            className="relative top-12 w-full rounded-3xl  bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#38A892]"
+            className="relative top-12 w-full rounded-3xl bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
           >
             Login
           </button>
         </form>
 
         {/* Social Login Buttons */}
-        <div className="relative top-5 mt-6 text-center ">
+        <div className="relative top-8 mt-6 text-center ">
           <p className="relative top-8 text-gray-600 text-sm mb-4">Or social login</p>
           <div className="flex justify-center gap-4">
             <button
