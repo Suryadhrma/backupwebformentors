@@ -1,35 +1,45 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const user = require('./models/user')
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
+const passwordRoutes = require('./routes/passwordRoutes');
+// Import Routes
+const courseRoutes = require('./routes/courseRoutes');
+const mentorRoutes = require('./routes/mentorRoutes');
 
-// Load environment variables
-dotenv.config();
+const adminRoutes = require('./routes/adminRoutes');
+const courseValidationRoutes = require('./routes/courseValidationRoutes');
+
+const adminAuthRoutes = require('./routes/adminAuthRoutes');
+const { authenticateAdmin } = require('./middleware/adminAuthMiddleware');
+
+const meetingRoutes = require('./routes/meetingRoutes');
+
+
+require('dotenv').config();
 
 const app = express();
+
+connectDB();
+app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/upload', uploadRoutes);
+app.use('/api/password', passwordRoutes);
+// Use Routes
+app.use('/api/courses', courseRoutes);
+app.use('/api/meetings', meetingRoutes);
+
+app.use('/api/mentor', mentorRoutes);
+
+// Tambahkan ini di bawah middleware yang ada
+// Tambahkan route login admin
+app.use('/api/admin/auth', adminAuthRoutes);
+
+// Lindungi route admin
+app.use('/api/admin', authenticateAdmin, adminRoutes);
+app.use('/api/validation', authenticateAdmin, courseValidationRoutes);
+
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
-
-// Middleware
-app.use(express.json()); // Untuk menangani JSON payload
-app.use(express.urlencoded({ extended: true })); // Untuk menangani form data
-
-
-// Koneksi ke MongoDB
-mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB connection error:', err));
-  
-
-
-    const userRoutes = require('./routes/userroutes');
-    app.use(userRoutes);
-
-
-// Jalankan server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
