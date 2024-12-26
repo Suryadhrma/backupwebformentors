@@ -12,7 +12,7 @@ const chatList = [
     time: '12:30',
     isAccepted: false,
     messages: [
-      { id: 1, text: 'Hey, what\'s up?', sender: 'John Doe', time: '12:30' },
+      { id: 1, text: "Hey, what's up?", sender: 'John Doe', time: '12:30' },
       { id: 2, text: 'How are you?', sender: 'John Doe', time: '12:32' },
     ],
   },
@@ -20,11 +20,11 @@ const chatList = [
     id: 2,
     name: 'Jane Smith',
     profilePic: 'https://via.placeholder.com/50',
-    lastMessage: 'Let\'s meet up tomorrow!',
+    lastMessage: "Let's meet up tomorrow!",
     time: '11:45',
     isAccepted: false,
     messages: [
-      { id: 1, text: 'Let\'s meet up tomorrow!', sender: 'Jane Smith', time: '11:45' },
+      { id: 1, text: "Let's meet up tomorrow!", sender: 'Jane Smith', time: '11:45' },
       { id: 2, text: 'Sounds good!', sender: 'You', time: '11:47' },
     ],
   },
@@ -84,7 +84,31 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row h-screen">
+      {/* Right Sidebar (Chat List) */}
+      <div className="w-full md:w-[300px] bg-[#a1e3d8] border-l">
+        <div className="flex flex-col">
+          {chatList.map((chat) => (
+            <div
+              key={chat.id}
+              className="flex items-center px-4 py-3 border-b hover:bg-gray-200 cursor-pointer"
+              onClick={() => setSelectedChat(chat)}
+            >
+              <img
+                className="w-10 h-10 rounded-full mr-3"
+                src={chat.profilePic}
+                alt="Profile"
+              />
+              <div className="flex-1">
+                <h4 className="font-medium text-sm">{chat.name}</h4>
+                <p className="text-gray-500 text-xs">{chat.lastMessage}</p>
+              </div>
+              <span className="text-gray-400 text-xs">{chat.time}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Main Chat Window */}
       <div className="flex-1 flex flex-col bg-white shadow-xl relative">
         <div className="flex-1 overflow-y-auto px-4 py-3 pb-16">
@@ -171,6 +195,11 @@ const ChatPage = () => {
                 placeholder="Type a message..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSendMessage();
+                  }
+                }}
               />
               <label htmlFor="file-upload" className="ml-3 cursor-pointer">
                 <Paperclip size={20} className="text-gray-500 hover:text-blue-500" />
@@ -191,30 +220,6 @@ const ChatPage = () => {
             </div>
           </div>
         )}
-      </div>
-
-      {/* Right Sidebar (Chat List) */}
-      <div className="w-[300px] bg-[#a1e3d8] border-l">
-        <div className="flex flex-col">
-          {chatList.map((chat) => (
-            <div
-              key={chat.id}
-              className="flex items-center px-4 py-3 border-b hover:bg-gray-200 cursor-pointer"
-              onClick={() => setSelectedChat(chat)}
-            >
-              <img
-                className="w-10 h-10 rounded-full mr-3"
-                src={chat.profilePic}
-                alt="Profile"
-              />
-              <div className="flex-1">
-                <h4 className="font-medium text-sm">{chat.name}</h4>
-                <p className="text-gray-500 text-xs">{chat.lastMessage}</p>
-              </div>
-              <span className="text-gray-400 text-xs">{chat.time}</span>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Modals */}

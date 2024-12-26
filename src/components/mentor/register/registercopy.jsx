@@ -41,94 +41,101 @@ const RegisterPart2 = () => {
   };
 
   return (
-    <div className="relative flex h-screen items-center justify-center bg-white px-4">
+    <div className="relative flex flex-wrap h-auto lg:h-screen items-center justify-center bg-white px-4 sm:px-8 lg:px-16 py-8">
       {/* Logo Rusa - Pojok Kiri Atas */}
       <img
         src={logoRusa}
         alt="Logo"
-        className="absolute top-0 left-0 m-4 h-28"
+        className="absolute top-4 left-4 h-20 sm:h-24 lg:h-28"
       />
 
-      {/* Left Section */}
-      <div className="relative flex w-1/2 flex-col items-center justify-center text-center">
-        <img src={maskotImage} alt="Maskot" className="h-80 mb-4" />
-        <p className="text-3xl font-medium text-gray-700">To be mentor, unlock</p>
-        <p className="text-3xl font-medium text-gray-700">your potential</p>
-      </div>
+      {/* Kontainer Utama */}
+      <div className="flex flex-col-reverse md:flex-row items-center justify-center w-full max-w-7xl">
+        {/* Left Section */}
+        <div className="relative flex flex-col items-center justify-center w-full md:w-1/2 text-center mb-8 md:mb-0">
+          <img src={maskotImage} alt="Maskot" className="h-60 sm:h-72 lg:h-80 mb-4 hidden md:block" />
+          <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-gray-700 hidden md:block">
+            To be mentor, unlock
+          </p>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-gray-700 hidden md:block">
+            your potential
+          </p>
+        </div>
 
-      {/* Right Section */}
-      <div className="relative left-[45px] w-1/2 max-w-xl rounded-lg bg-[#3DD598B2] px-11 py-14 ml-15  ">
-        <h2 className="mb-24 text-center text-2xl font-semibold text-gray-800">
-          Daftar Sebagai Mentor
-        </h2>
-        <form
-          onSubmit={handleSubmit}
-          className="relative top-4 space-y-4"
-        >
-          <label
-            htmlFor="cv"
-            className="relative block w-full cursor-pointer rounded-md bg-white py-2 pr-[365px] text-center text-gray-400 bottom-16 "
+        {/* Right Section */}
+        <div className="w-full lg:w-1/2 max-w-xl rounded-lg bg-[#3DD598B2] px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-16 mt-14 md:mt-0 md:mb-8 lg:mb-0">
+          <h2 className="mb-8 text-center text-xl sm:text-2xl font-semibold text-gray-800">
+            Daftar Sebagai Mentor
+          </h2>
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6"
           >
-            {fileNames.cv}
-          </label>
-          <input
-            type="file"
-            id="cv"
-            name="cv"
-            onChange={(e) => handleFileChange(e, "cv")}
-            accept=".pdf,.doc,.docx"
-            className="hidden "
-          />
+            <label
+              htmlFor="cv"
+              className="block w-full cursor-pointer rounded-md bg-white py-2 px-4 text-left text-gray-400"
+            >
+              {fileNames.cv}
+            </label>
+            <input
+              type="file"
+              id="cv"
+              name="cv"
+              onChange={(e) => handleFileChange(e, "cv")}
+              accept=".pdf,.doc,.docx"
+              className="hidden"
+            />
 
-          <label
-            htmlFor="ktp"
-            className="relative block w-full cursor-pointer rounded-md bg-white py-2 pr-[360px] text-center text-gray-400 bottom-14"
-          >
-            {fileNames.ktp}
-          </label>
-          <input
-            type="file"
-            id="ktp"
-            name="ktp"
-            onChange={(e) => handleFileChange(e, "ktp")}
-            accept="image/*,.pdf"
-            className="hidden"
-          />
+            <label
+              htmlFor="ktp"
+              className="block w-full cursor-pointer rounded-md bg-white py-2 px-4 text-left text-gray-400"
+            >
+              {fileNames.ktp}
+            </label>
+            <input
+              type="file"
+              id="ktp"
+              name="ktp"
+              onChange={(e) => handleFileChange(e, "ktp")}
+              accept="image/*,.pdf"
+              className="hidden"
+            />
 
-          <label
-            htmlFor="photo"
-            className="relative block w-full cursor-pointer rounded-md bg-white py-2 pr-[335px] text-center text-gray-400 bottom-12"
-          >
-            {fileNames.photo}
-          </label>
-          <input
-            type="file"
-            id="photo"
-            name="photo"
-            onChange={(e) => handleFileChange(e, "photo")}
-            accept="image/*"
-            className="hidden"
-          />
+            <label
+              htmlFor="photo"
+              className="block w-full cursor-pointer rounded-md bg-white py-2 px-4 text-left text-gray-400"
+            >
+              {fileNames.photo}
+            </label>
+            <input
+              type="file"
+              id="photo"
+              name="photo"
+              onChange={(e) => handleFileChange(e, "photo")}
+              accept="image/*"
+              className="hidden"
+            />
 
-          <input
-            type="text"
-            placeholder="Link Portofolio"
-            required
-            className="relative w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none bottom-10"
-          />
-          <input
-            type="text"
-            placeholder="Role Kamu (Bisa Lebih Dari 1)"
-            required
-            className="relative w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none bottom-8"
-          />
-          <button
-            type="submit"
-            className="relative top-7 w-full rounded-3xl bg-[#FFF] py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
-          >
-            Next
-          </button>
-        </form>
+            <input
+              type="text"
+              placeholder="Link Portofolio"
+              required
+              className="w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+            <input
+              type="text"
+              placeholder="Role Kamu (Bisa Lebih Dari 1)"
+              required
+              className="w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="w-full rounded-3xl bg-white py-2 text-[#339989] transition duration-300 hover:bg-[#339989] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4ECCA3]"
+            >
+              Next
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
