@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Paperclip, Coins, TriangleAlert } from 'lucide-react';
+import { Send, Paperclip, Coins, TriangleAlert, Menu, X } from 'lucide-react';
 import ReportMentor from '../../../components/mentor/ReportMentor'; // Modal laporan
 import ReportSuccesMentor from '../../../components/mentor/ReportSuccesMentor'; // Modal sukses
 
@@ -174,82 +174,92 @@ const ChatPage = () => {
 
         {/* Input Box */}
         {selectedChat.isAccepted && (
-          <div className="fixed bottom-0 left-0 right-0 bg-gray-100 shadow-md px-4 py-3 w-full max-w-3xl mx-auto">
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={() => setShowReportMentor(true)}
-                className="bg-[#27DEBF] p-2 text-black font-semibold rounded-md hover:bg-[#1bc6a7] hidden lg:block"
-              >
-                Laporkan
-              </button>
-              <button
-                onClick={() => setShowReportMentor(true)}
-                className="bg-[#27DEBF] p-2 text-black font-semibold rounded-md hover:bg-[#1bc6a7] lg:hidden"
-              >
-                <TriangleAlert color="#ff0000" />
-              </button>
+          <div className="flex items-center space-x-3 px-4 py-3 border-t bg-gray-100">
+          <button
+            onClick={() => setShowReportMentor(true)}
+            className="bg-[#27DEBF] p-2 text-black font-semibold rounded-md hover:bg-[#1bc6a7] hidden lg:block"
+          >
+            Laporkan
+          </button>
+          <button
+            onClick={() => setShowReportMentor(true)}
+            className="bg-[#27DEBF] p-2 text-black font-semibold rounded-md hover:bg-[#1bc6a7] lg:hidden"
+          >
+            <TriangleAlert color="#ff0000" />
+          </button>
 
-              <input
-                type="text"
-                className="flex-1 px-4 py-2 rounded-full bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Ketik pesan..."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 1024) {
-                    e.preventDefault();
-                    handleSendMessage();
-                  }
-                }}
-              />
+          <input
+            type="text"
+            className="flex-1 px-4 py-2 rounded-full bg-white shadow focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ketik pesan..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 1024) {
+                e.preventDefault();
+                handleSendMessage();
+              }
+            }}
+          />
 
-              <label htmlFor="file-upload" className="cursor-pointer">
-                <Paperclip size={20} className="text-gray-500 hover:text-blue-500" />
-              </label>
-              <input
-                type="file"
-                id="file-upload"
-                className="hidden"
-                onChange={handleFileChange}
-                accept=".jpg,.jpeg,.png,.pdf,.mp4"
-              />
+          <label htmlFor="file-upload" className="cursor-pointer">
+            <Paperclip size={20} className="text-gray-500 hover:text-blue-500" />
+          </label>
+          <input
+            type="file"
+            id="file-upload"
+            className="hidden"
+            onChange={handleFileChange}
+            accept=".jpg,.jpeg,.png,.pdf,.mp4"
+          />
 
-              <button
-                className="text-blue-500 hover:text-blue-700"
-                onClick={handleSendMessage}
-              >
-                <Send size={20} />
-              </button>
-            </div>
-          </div>
+          <button
+            className="text-blue-500 hover:text-blue-700"
+            onClick={handleSendMessage}
+          >
+            <Send size={20} />
+          </button>
+        </div>
         )}
       </div>
 
-      {/* Right Sidebar (Chat List) */}
-      <div
-        className={`fixed right-0  w-[250px] bg-[#a1e3d8] border-l lg:block ${
-          isSidebarOpen ? 'block' : 'hidden'
-        }`}
+        {/* Floating Button */}
+      <button
+        className="fixed top-20 right-4 z-50 p-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:outline-none lg:hidden"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        <div className="flex flex-col">
-          {chatList.map((chat) => (
-            <div
-              key={chat.id}
-              className="flex items-center px-4 py-3 border-b hover:bg-gray-200 cursor-pointer"
-              onClick={() => setSelectedChat(chat)}
-            >
-              <img
-                className="w-10 h-10 rounded-full mr-3"
-                src={chat.profilePic}
-                alt="Profile"
-              />
-              <div className="flex-1">
-                <h4 className="font-medium text-sm">{chat.name}</h4>
-                <p className="text-gray-500 text-xs">{chat.lastMessage}</p>
+        {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
+      <div className="flex-row-reverse">
+        {/* Sidebar */}
+        <div
+          className={`fixed lg:relative z-40 top-0 right-0 w-[300px] bg-[#a1e3d8] border-l h-full flex-shrink-0 transform transition-transform ${
+            isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
+          } lg:translate-x-0 lg:h-full`}
+        >
+          <div className="flex flex-col h-full overflow-y-auto">
+            {chatList.map((chat) => (
+              <div
+                key={chat.id}
+                className={`flex items-center px-4 py-3 border-b hover:bg-gray-200 cursor-pointer ${
+                  selectedChat.id === chat.id ? 'bg-gray-200' : ''
+                }`}
+                onClick={() => setSelectedChat(chat)}
+              >
+                <img
+                  className="w-10 h-10 rounded-full mr-3"
+                  src={chat.profilePic}
+                  alt={`${chat.name}'s Profile`}
+                />
+                <div className="flex-1">
+                  <h4 className="font-medium text-sm">{chat.name}</h4>
+                  <p className="text-gray-500 text-xs">{chat.lastMessage}</p>
+                </div>
+                <span className="text-gray-400 text-xs">{chat.time}</span>
               </div>
-              <span className="text-gray-400 text-xs">{chat.time}</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
